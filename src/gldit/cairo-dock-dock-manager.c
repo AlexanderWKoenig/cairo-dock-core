@@ -1054,12 +1054,6 @@ static gboolean _cairo_dock_poll_screen_edge (G_GNUC_UNUSED gpointer data)  // t
 	GldiWindowActor *actor = gldi_windows_get_active();
 	if (actor && actor->bIsFullScreen)
 		return TRUE;
-	
-	// if the active window is full screen, avoid showing the docks on edge hit
-	// some WM will show the dock on top of fullscreen windows, and it's a problem in case of games, for instance
-	GldiWindowActor *actor = gldi_windows_get_active();
-	if (actor && actor->bIsFullScreen)
-		return TRUE;
 
 	mouse.bUpToDate = FALSE;  // mouse position will be updated by the first hidden dock.
 	g_list_foreach (s_pRootDockList, (GFunc) _cairo_dock_unhide_root_dock_on_mouse_hit, &mouse);
